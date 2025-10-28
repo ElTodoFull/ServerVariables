@@ -160,4 +160,25 @@ public class ServerVariablesAPI {
         }
         return result.getResultValue().contains(value);
     }
+
+    /**
+     * Gets all values from a global list variable joined by a separator
+     * @param variableName The name of the list variable
+     * @param separator The separator to use between values
+     * @return StringVariableResult containing the joined string or error
+     */
+    public static StringVariableResult getListVariableValueAll(String variableName, String separator) {
+        return plugin.getListVariablesManager().getListVariableValueAll(null, variableName, separator);
+    }
+    
+    /**
+     * Gets all values from a player's list variable joined by a separator
+     * @param playerName The name of the player
+     * @param variableName The name of the list variable
+     * @param separator The separator to use between values
+     * @return StringVariableResult containing the joined string or error
+     */
+    public static StringVariableResult getListVariableValueAll(String playerName, String variableName, String separator) {
+        return plugin.getListVariablesManager().getListVariableValueAll(playerName, variableName, separator);
+    }
 }
