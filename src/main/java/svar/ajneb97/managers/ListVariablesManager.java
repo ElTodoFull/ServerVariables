@@ -38,6 +38,19 @@ public class ListVariablesManager {
         return StringVariableResult.noErrorsWithVariable(variableValue.get(index),listVariableResult.getVariable());
     }
 
+    public StringVariableResult getListVariableValueAll(String playerName, String variableName, String separator){
+        ListVariableResult listVariableResult = getListVariableValue(playerName,variableName,false);
+        if(listVariableResult.isError()){
+            return listVariableResult.toStringVariableResult();
+        }
+        List<String> variableValue = listVariableResult.getResultValue();
+    
+        // Join all values with the specified separator
+        String joinedValue = String.join(separator, variableValue);
+        
+        return StringVariableResult.noErrorsWithVariable(joinedValue, listVariableResult.getVariable());
+    }
+
     public StringVariableResult setListVariableValue(String playerName, String variableName, int index, String newValue, boolean add){
         FileConfiguration config = plugin.getConfigsManager().getMainConfigManager().getConfig();
         VariablesManager variablesManager = plugin.getVariablesManager();
