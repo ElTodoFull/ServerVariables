@@ -168,7 +168,7 @@ public class ServerVariablesAPI {
      * @return StringVariableResult containing the joined string or error
      */
     public static StringVariableResult getListVariableValueAll(String variableName, String separator) {
-        return plugin.getListVariablesManager().getListVariableValueAll(null, variableName, separator);
+        return plugin.getVariablesManager().getListVariablesManager().getListVariableValueAll(null, variableName, separator);
     }
     
     /**
@@ -179,6 +179,6 @@ public class ServerVariablesAPI {
      * @return StringVariableResult containing the joined string or error
      */
     public static StringVariableResult getListVariableValueAll(String playerName, String variableName, String separator) {
-        return plugin.getListVariablesManager().getListVariableValueAll(playerName, variableName, separator);
+        return plugin.getVariablesManager().getListVariablesManager().getListVariableValueAll(playerName, variableName, separator);
     }
 }
