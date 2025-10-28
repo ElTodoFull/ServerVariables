@@ -109,6 +109,23 @@ public class ServerVariablesExpansion extends PlaceholderExpansion {
                     String[] sep2 = variableName.split(":");
                     return ServerVariablesAPI.listVariableContainsValue(player.getName(), sep2[0], sep2[1]) + "";
                 }
+                case "globalvalueall": {
+                    // Extract separator and variable name
+                    String separator = sep[1];
+                    String variableName = identifierM.substring(identifierM.indexOf(separator + "_") + (separator + "_").length());
+                    result = ServerVariablesAPI.getListVariableValueAll(variableName, separator);
+                    return result.getResultValue() != null ? result.getResultValue() : result.getErrorKey();
+                }
+                case "valueall": {
+                    if (player == null) {
+                        return "";
+                    }
+                    // Extract separator and variable name
+                    String separator = sep[1];
+                    String variableName = identifierM.substring(identifierM.indexOf(separator + "_") + (separator + "_").length());
+                    result = ServerVariablesAPI.getListVariableValueAll(player.getName(), variableName, separator);
+                    return result.getResultValue() != null ? result.getResultValue() : result.getErrorKey();
+                }
             }
         }else if(identifier.startsWith("globalvalue_")){
         	// %servervariables_globalvalue_<variable>%
